@@ -8,3 +8,5 @@ Jeśli będziesz chciał to odpalić na windowsie na szybkości, to trzeba się 
 5. Musisz wrzucić tam wymagane bazy danych (są w folderze tej stronki, pliki to "uzytkownicy.sql" i "studenci.sql"). 
 Po lewo "nowa", wykonaj, później na środku powyżej "import", wybierasz określony plik (np. uzytkownicy.sql) i wykonaj. I tak dwa razy dla obydwu baz.
 6. I to w sumie wszystko, odpalasz stronkę poprzez "localhost/stronka/" w przeglądarce i się bawisz.
+
+Generalnie to te kody są dość chaotyczne, trzeba będzie je tam kiedyś uporządkować żeby były bardziej zrozumiałe
