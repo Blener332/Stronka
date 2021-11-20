@@ -27,6 +27,7 @@ logowanie.php - strona logowania
 polacz_studenci.php - skrypt do łączenia się z bazą "studenci"
 polacz_uzytkownicy.php - skryptdo łączenia się z bazą "użytkownicy"
 rejestracja.php - strona rejestracji
+usun.php - skrypt usuwający wiersz z tablicy
 wyloguj.php - jak sama nazwa mówi
 zaloguj.php - skrypt wykonujący zalogowanie po kliknięciu przycisku "Zaloguj" na stronie logowania
 
