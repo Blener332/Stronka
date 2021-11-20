@@ -18,16 +18,16 @@ Rzeczy które zrobiłem:
 6. Logowanie w celu możliwości edycji, do wcześniej utworzonych kont, również zabezpieczony przed włamami na konta oraz przed błędnymi danymi.
 7. Po zalogowaniu istnieje możliwość usunięcia wiersza, dodania wiersza, edycji istniego wiersza, wylogowania.
 
-dodaj.php - skrypt do dodawania wierszy w tablicy
-edytowanie.php - strona, która odpala się jeśli się zalogujesz
-edytuj.php - skrypt do edycji istniejącego wiersza
-index.php - strona dla niezalogowanych
-logowanie.php - strona logowania
-polacz_studenci.php - skrypt do łączenia się z bazą "studenci"
-polacz_uzytkownicy.php - skryptdo łączenia się z bazą "użytkownicy"
-rejestracja.php - strona rejestracji
-wyloguj.php - jak sama nazwa mówi
-zaloguj.php - skrypt wykonujący zalogowanie po kliknięciu przycisku "Zaloguj" na stronie logowania
+1. dodaj.php - skrypt do dodawania wierszy w tablicy
+2. edytowanie.php - strona, która odpala się jeśli się zalogujesz
+3. edytuj.php - skrypt do edycji istniejącego wiersza
+4. index.php - strona dla niezalogowanych
+5. logowanie.php - strona logowania
+6. polacz_studenci.php - skrypt do łączenia się z bazą "studenci"
+7. polacz_uzytkownicy.php - skryptdo łączenia się z bazą "użytkownicy"
+8. rejestracja.php - strona rejestracji
+9. wyloguj.php - jak sama nazwa mówi
+10. zaloguj.php - skrypt wykonujący zalogowanie po kliknięciu przycisku "Zaloguj" na stronie logowania
 
 
 Generalnie to te kody są dość chaotyczne, trzeba będzie je tam kiedyś uporządkować żeby były bardziej zrozumiałe
