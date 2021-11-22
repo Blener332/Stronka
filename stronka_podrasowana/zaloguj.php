@@ -36,7 +36,7 @@
 					unset($_SESSION['blad']);
 				
 					$rezultat->free_result();
-					header('Location: edytowanie.php');
+					header('Location: index.php');
 				}
 				else
 				{
