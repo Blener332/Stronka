@@ -207,12 +207,12 @@
                                 <input type="password" class="form-control" id="haslo2" name="haslo2">
                             
                             </div>
-							<div class="col-lg-12">
 							
-                            <div class="col-lg-12">
                                 <input type="submit" class="btn btn-primary form-control" name="dodaj" value="Zarejestruj się">
                             </div>
-							
+							<div class="col-lg-12">
+							<a href="logowanie.php">Wróć do strony logowania</a>
+                            <div class="col-lg-12">
                         </div>
 						
                     </form>
