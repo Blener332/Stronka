@@ -44,8 +44,9 @@
                             </div>
 							<div class="col-lg-6 mb-3">
 							<a href="rejestracja.php">Zarejestruj się </a>
+							<br />
+							<a href="index.php">Wróć do strony głównej</a>
 							</div>
-							
 							<div class="col-lg-6 mb-3">
 							<?php
 
