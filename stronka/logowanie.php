@@ -54,6 +54,7 @@
 
 
 									echo $_SESSION['blad'];
+									unset($_SESSION['blad']); //linijka która naprawiła logowanie
 								}
 							?>
 							</div>
