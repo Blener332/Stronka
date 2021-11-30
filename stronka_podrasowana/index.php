@@ -1,11 +1,6 @@
 <?php
-
 	session_start();
-	//$_SESSION['zalogowany']=false;
-	
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -78,16 +73,13 @@
                     <th>Data rozpoczęcia</th>
                     <th>Miasto</th>
                     <th>Kraj</th>
-                    
                 </tr>
             </thead>
 
             <tbody>
 			
                 <?php
-				
-		
-				// include connection
+
                 require_once 'polacz_studenci.php';
 
                 $rezultat = mysqli_query($polaczenie, "SELECT * FROM studenci");
@@ -114,7 +106,6 @@
                 ?>
             </tbody>
         </table>
-		
 		<div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sortuj według
