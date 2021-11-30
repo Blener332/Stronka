@@ -103,12 +103,9 @@ function test_input($data)
     <!-- BOOTSTRAP 4 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-   
   </head>
   <body>
-
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    
     <div class="mx-5 order-0">
         <a class="navbar-brand mx-auto" href="index.php">Nasza strona</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -151,7 +148,7 @@ function test_input($data)
         </ul>
     </div>
 </nav>
-    <!-- submit form -->
+    <!-- formularz dodawania -->
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-7">
@@ -205,19 +202,16 @@ function test_input($data)
     </div>
 	
 	<footer class="page-footer font-small blue pt-4">
-
- 
-  <div class="footer-copyright text-center py-3">
-  <?php
-  if (isset($_SESSION['zalogowany']))
-	{
-		// podanie w stopce strony kto jest zalogowany
-		echo "Zalogowany jako: ". $_SESSION['uzytkownik']; 
-	}
+ 		<div class="footer-copyright text-center py-3">
+  			<?php
+  			if (isset($_SESSION['zalogowany']))
+			{
+				// podanie w stopce strony kto jest zalogowany
+				echo "Zalogowany jako: ". $_SESSION['uzytkownik']; 
+			}
 	
-  ?>
-  </div>
-
+  			?>
+ 		</div>
 	</footer>
 </body>
 
