@@ -27,7 +27,7 @@
         <ul class="navbar-nav mr-5">
             <li class="nav-item">
                 <a class="nav-link" 
-				<?php
+				<?php //zmiana przycisków zaloguj/wyloguj
 				if(isset($_SESSION['zalogowany'])) 
 				{
 					echo "href='wyloguj.php' >Wyloguj";
@@ -44,7 +44,7 @@
             </li>
 			<li class="nav-item">
                 <a 
-				<?php
+				<?php //aktywność przycisku edytuj
 				if(isset($_SESSION['zalogowany'])) 
 				{
 					echo "class='nav-link'";
@@ -59,14 +59,10 @@
         </ul>
     </div>
 </nav>
-
- 
     <div class="container mt-5">
-        
-		<h1>Lista studentów</h1> <br />
-		<a href="dodaj.php" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Dodaj</a>
+	<h1>Lista studentów</h1> <br />
+	<a href="dodaj.php" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Dodaj</a>
         <table class="table table-bordered table-striped mt-4">
-            
             <thead>
                 <tr>
                     <th>Lp.</th>
@@ -80,15 +76,14 @@
                     <th>Operacje</th>
                 </tr>
             </thead>
-
             <tbody>
 			
-                <?php
+                <?php // jeśli niezalogowany, to z powrotem do indexu
 				if (!isset($_SESSION['zalogowany']))
 				{
 					header('Location: index.php');
 					
-                }
+                		}
 								
                 require_once 'polacz_studenci.php';
 
@@ -127,21 +122,15 @@
         }
     </script>
 	<footer class="page-footer font-small blue pt-4">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">
-  <?php
-  if (isset($_SESSION['zalogowany']))
-	{
-		
-		echo "Zalogowany jako: ". $_SESSION['uzytkownik']; 
-	}
-	
-  ?>
-  </div>
-  <!-- Copyright -->
-
-</footer>
+ 		 <div class="footer-copyright text-center py-3">
+ 		 <?php
+ 		 if (isset($_SESSION['zalogowany']))
+			{
+				echo "Zalogowany jako: ". $_SESSION['uzytkownik']; 
+			}
+  		?>
+ 		 </div>
+	</footer>
 </body>
 
 </html>
