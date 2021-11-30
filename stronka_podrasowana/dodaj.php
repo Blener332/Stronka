@@ -1,17 +1,17 @@
 <?php
-// include connection
+// nawiązanie połączenia z bazą
 require_once 'polacz_studenci.php';
 session_start();
 $blad_imie = $blad_nazwisko = $blad_email = $blad_kierunek = $blad_rok = $blad_miasto = $blad_kraj = "";
 $imie = $nazwisko = $email = $kierunek = $rok = $miasto = $kraj = "";
 
-// processing form data when form is submit
+// sprawdzanie wprowadzonych danych
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["imie"])) {
         $blad_imie = "To pole jest wymagane";
     } else {
         $imie = test_input($_POST["imie"]);
-        // check if imie contains only letters
+        // czy imie zawiera tylko litery
         if (!ctype_alpha($imie)) {
             $blad_imie = "Imie powinno zawierać tylko litery";
         }
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $blad_nazwisko = "To pole jest wymagane";
     } else {
         $nazwisko = test_input($_POST["nazwisko"]);
-        // check if nazwisko contains only letters
+        // czy nazwisko zawiera tylko litery
         if (!ctype_alpha($nazwisko)) {
             $blad_nazwisko = "Nazwisko powinno zawierać tylko litery";
         }
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $blad_email = "To pole jest wymagane";
     } else {
         $email = test_input($_POST["email"]);
-        // check e-mail address is valid
+        // cczy email jest poprawny
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $emailErr = "Niepoprawny adres e-mail";
         }
@@ -47,16 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $blad_rok = "To pole jest wymagane";
     } else {
         $rok = test_input($_POST["rok"]);
-        /* check if rok contains numbers only, also 
-        check min and max value to be entered */
+        /* czy rok składa się z cyfr oraz czy jest z przedziału 1999-2021 */
         if (!ctype_digit($rok)) {
             $blad_rok = "Rok musi być wartością liczbową";
-        } elseif ($rok < 2013) {
-            $blad_rok = "Rok musi być większy lub równy od 2013";
+        } elseif ($rok < 1999) {
+            $blad_rok = "Rok musi być większy lub równy od 1999";
         } elseif ($rok > 2021) {
             $blad_rok = "Rok musi być mniejszy lub równy od 2021";
         } else {
-            // no code will execute
+            // jak jest okej, to nic nie rób
         }
     }
 
@@ -72,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $kraj = test_input($_POST["kraj"]);
     }
 
-    // if no errors then insert data into databse
+    // jak wszystko jest w porządku, przesłanie danych do bazy
     if (empty($blad_imie) && empty($blad_nazwisko) && empty($blad_email) && empty($blad_kierunek) && empty($blad_rok) && empty($blad_miasto) && empty($blad_kraj)) {
 
         $sql = "INSERT INTO studenci (imie, nazwisko, email, kierunek, rok, miasto, kraj) VALUES ('$imie', '$nazwisko', '$email', '$kierunek', '$rok' , '$miasto', '$kraj')";
@@ -120,10 +119,10 @@ function test_input($data)
         <ul class="navbar-nav mr-5">
             <li class="nav-item">
                 <a class="nav-link" 
-				<?php
+				<?php // zmiana przycisków zaloguj/wyloguj
 				if(isset($_SESSION['zalogowany'])) 
 				{
-					echo "href='wyloguj.php' >Wyloguj";
+					echo "href='wyloguj.php'>Wyloguj";
 				} 
 				else 
 				{
@@ -137,7 +136,7 @@ function test_input($data)
             </li>
 			<li class="nav-item">
                 <a 
-				<?php
+				<?php // zmiana przycisków zaloguj/wyloguj
 				if(isset($_SESSION['zalogowany'])) 
 				{
 					echo "class='nav-link'";
@@ -207,20 +206,19 @@ function test_input($data)
 	
 	<footer class="page-footer font-small blue pt-4">
 
-  <!-- Copyright -->
+ 
   <div class="footer-copyright text-center py-3">
   <?php
   if (isset($_SESSION['zalogowany']))
 	{
-		
+		// podanie w stopce strony kto jest zalogowany
 		echo "Zalogowany jako: ". $_SESSION['uzytkownik']; 
 	}
 	
   ?>
   </div>
-  <!-- Copyright -->
 
-</footer>
+	</footer>
 </body>
 
 </html>
