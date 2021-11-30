@@ -1,21 +1,18 @@
 <?php
-// include connection
 require_once 'polacz_studenci.php';
 	session_start();
-// define variables and initialize with empty values
+
 $blad_imie = $blad_nazwisko = $blad_email = $blad_kierunek = $blad_rok = $blad_miasto = $blad_kraj = "";
 $imie = $nazwisko = $email = $kierunek = $rok = $miasto = $kraj = "";
 
-// processing form data when form is submit
+// sprawdzanie wprowadzonych danych, tak samo jak "dodaj"
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
-    // get hidden id input value
     $id = $_POST["id"];
 
     if (empty($_POST["imie"])) {
         $blad_imie = "To pole jest wymagane";
     } else {
         $imie = trim($_POST["imie"]);
-        // check if imie contains only letters
         if (!ctype_alpha($imie)) {
             $blad_imie = "Imie powinno składać się tylko z liter";
         }
@@ -25,7 +22,6 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $blad_nazwisko = "To pole jest wymagane";
     } else {
         $nazwisko = trim($_POST["nazwisko"]);
-        // check if nazwisko contains only letters
         if (!ctype_alpha($nazwisko)) {
             $blad_nazwisko = "Nazwisko powinno składać się tylko z liter";
         }
@@ -35,7 +31,6 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $blad_email = "To pole jest wymagane";
     } else {
         $email = trim($_POST["email"]);
-        // check if e-mail address is valid
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $blad_email = "Niepoprawny adres e-mail";
         }
@@ -51,16 +46,14 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         $blad_rok = "To pole jest wymagane";
     } else {
         $rok = trim($_POST["rok"]);
-        /* check if rok contains numbers only, also 
-        check min and max value to be entered */
         if (!ctype_digit($rok)) {
             $blad_rok = "Rok musi być wartością liczbową";
         } elseif ($rok < 2013) {
-            $blad_rok = "Rok musi być większy lub równy 2013";
+            $blad_rok = "Rok musi być większy lub równy 1999";
         } elseif ($rok > 2021) {
             $blad_rok = "Rok musi być mniejszy lub równy 2021";
         } else {
-            // no code will execute
+      
         }
     }
 
@@ -75,35 +68,29 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     } else {
         $kraj = trim($_POST["kraj"]);
     }
-
-    // update ile_wierszy if no errors found
+	//zaktualizuj wiersz, jeśli wszystko gra
     if (empty($blad_imie) && empty($blad_nazwisko) && empty($blad_email) && empty($blad_kierunek) && empty($blad_rok) && empty($blad_miasto) && empty($blad_kraj)) {
 
         $sql = "UPDATE studenci SET imie='$imie', nazwisko='$nazwisko', email='$email', kierunek='$kierunek', rok='$rok', miasto='$miasto', kraj='$kraj' WHERE student_id='$id'";
 
         if (mysqli_query($polaczenie, $sql)) {
             echo "<script>alert('Wiersz został pomyślnie zaktualizowany');</script>";
-            //echo "<script>window.location.href='http://localhost/PHP-MySQL/';</script>";
-			header('Location: edytowanie.php');
+            header('Location: edytowanie.php');
             exit();
         }
     }
-    // close connection
+    // zamknij połączenie
     mysqli_close($polaczenie);
 } else {
-    // check if url contain id, if not redirect to index page
     if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
-        // get id from url
         $id = trim($_GET["id"]);
 
-        // retrieve ile_wierszy associated with id
         $sql = "SELECT * FROM studenci WHERE student_id = '$id'";
         $rezultat = mysqli_query($polaczenie, $sql);
         $ile_wierszy = mysqli_num_rows($rezultat);
 
         if ($ile_wierszy == 1) {
             $wiersz = mysqli_fetch_array($rezultat, MYSQLI_ASSOC);
-            // retrieve individual field value
             $imie = $wiersz["imie"];
             $nazwisko = $wiersz["nazwisko"];
             $email = $wiersz["email"];
@@ -112,8 +99,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             $miasto = $wiersz["miasto"];
             $kraj = $wiersz["kraj"];
         }
-        // close connection
-        mysqli_close($polaczenie);
+       mysqli_close($polaczenie);
     } else {
         echo "<script>alert('Proszę wybrać ile wierszy zaktualizować');</script>";
         header('Location: edytowanie.php');
@@ -235,7 +221,6 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 	
 <footer class="page-footer font-small blue pt-4">
 
-  <!-- Copyright -->
   <div class="footer-copyright text-center py-3">
   <?php
   if (isset($_SESSION['zalogowany']))
@@ -246,7 +231,6 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 	
   ?>
   </div>
-  <!-- Copyright -->
 
 </footer>
 </body>
